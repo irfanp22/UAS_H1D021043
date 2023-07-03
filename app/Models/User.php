@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    protected $table = 'pelanggans';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function pesanan(){
+        return $this->hasMany(Pesanan::class);
+    }
 }
