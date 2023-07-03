@@ -9,6 +9,8 @@ Alpine.start();
 import '@fortawesome/fontawesome-free/js/all.js';
 import jQuery from 'jquery';
 window.$ = jQuery;
+import select2 from 'select2';
+window.select2 = select2;
 import DataTables from 'datatables.net-dt';
 window.DataTable = DataTables;
 

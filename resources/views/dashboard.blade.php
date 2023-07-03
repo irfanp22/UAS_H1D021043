@@ -17,7 +17,7 @@
                         <div class="p-4">
                             <div class="border border-gray-200 rounded-lg">
                                 <div class="bg-white px-4 py-3">
-                                    <table id="tasks" class="w-full border-collapse text-gray-900">
+                                    <table id="pesanan" class="w-full border-collapse text-gray-900">
                                         <thead>
                                             <tr>
                                                 <th class="py-2">No</th>
@@ -40,20 +40,20 @@
                                                         <span class="inline-flex items-center px-2 py-0.5 rounded-full text-sm font-medium text-white 
                                                             {{ $d->pembayaran->status == 1 ? 'bg-green-500' : 'bg-yellow-500' }} ">
                                                             @if ($d->pembayaran->status == 1)
-                                                                <a href="tasks/completed"><i class="fa-solid fa-circle-info"></i></a>
+                                                                Dibayar
                                                             @else
-                                                                <a href="tasks/incomplete"><i class="fa-solid fa-circle-info"></i></a>
+                                                                Belum Dibayar
                                                             @endif
                                                         </span>
                                                         @if ($d->pembayaran->status == 1)
-                                                            <a href="tasks/completed"><i class="fa-solid fa-circle-info"></i></a>
+                                                            <a href="pesanan/completed"><i class="fa-solid fa-circle-info"></i></a>
                                                         @else
-                                                            <a href="tasks/incomplete"><i class="fa-solid fa-circle-info"></i></a>
+                                                            <a href="pesanan/incomplete"><i class="fa-solid fa-circle-info"></i></a>
                                                         @endif
                                                     </td>
                                                     <td class="py-2">
                                                         <div class="flex items-center">
-                                                            <form action="{{ route('status', ['id' => $d->id]) }}" method="post" class="form">
+                                                            <form action="" method="post" class="form">
                                                                 @csrf
                                                                 @method('put')
                                                                 @if ($d->status_id == 1)
@@ -63,11 +63,11 @@
                                                                 @endif
                                                             </form>
                                                             |
-                                                            <form action="tasks/{{ $d->id }}" method="get" class="form">
+                                                            <form action="pesanan/{{ $d->id }}/edit" method="get" class="form">
                                                                 <x-primary-button><i class="fa-regular fa-pen-to-square fa-xl"></i></x-primary-button>
                                                             </form>
                                                             |
-                                                            <form action="{{ route('hapus', ['id' => $d->id]) }}" method="post" class="form">
+                                                            <form action="" method="post" class="form">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <x-primary-button><i class="fa-solid fa-trash-can fa-xl"></i></x-primary-button>
@@ -88,16 +88,16 @@
     </div>
 </x-app-layout>
 <script type="module">
-        $(document).ready(function(){
-            $('#tasks').DataTable({
-                order: [],
-                columnDefs: [
-                { targets: [0], orderable: false, searchable: false, orderFixed: true}
-                ]
-            })
-            window.styling();
-            $('#tasks_filter input[type="search"]').on('input', function(){
-                window.styling();
-            })
-        })
-    </script>
+$(document).ready(function(){
+    $('#pesanan').DataTable({
+        order: [],
+        columnDefs: [
+        { targets: [0], orderable: false, searchable: false, orderFixed: true}
+        ]
+    })
+    window.styling();
+    $('#pesanan_filter input[type="search"]').on('input', function(){
+        window.styling();
+    })
+})
+</script>

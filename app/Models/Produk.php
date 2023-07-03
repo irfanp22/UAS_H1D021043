@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama',
+        'keterangan',
+    ];
     public function pesanan(){
         $this->hasMany(Pesanan::class);
     }

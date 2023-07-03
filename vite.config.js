@@ -15,6 +15,7 @@ export default defineConfig({
         alias: {
             '$': 'jQuery',
             'DataTable': 'DataTables',
+            'select2': 'select2'
         },
     },
 });
