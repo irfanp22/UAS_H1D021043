@@ -23,10 +23,11 @@ Route::get('/dashboard', function () {
     return redirect()->route('pesanan.index');
 })->name('dashboard');
 
-
-Route::resource('pesanan', PesananController::class)->middleware(['auth', 'verified']);
-
 Route::middleware('auth')->group(function () {
+    Route::resource('pesanan', PesananController::class);
+    Route::put('{id}/status', [PesananController::class, 'status'])->name('status');
+    Route::get('pesanan/completed', [PesananController::class, 'completed'])->name('completed');
+    Route::get('pesanan/incomplete', [PesananController::class, 'incomplete'])->name('incomplete');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
